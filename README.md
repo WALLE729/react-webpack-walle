@@ -4,8 +4,7 @@
 ##构建 react+webpack 的前端技术栈
 *1.首先进入到该项目目录下，安装命令环境
 	npm install webpack -g  验证 ok?  webpack --version  
-*2.创建package.json 工程文件（通常用的方法） 就是本项目中的文件，记得点赞哈，整理出这么个东西，真是太不容易啦  
-
+*2.创建package.json 工程文件（通常用的方法	npm init -y;） 就是本项目中的文件，记得点赞哈，整理出这么个东西，真是太不容易啦  
 *3.如果已有本项目的package.json文件    
 
 	npm install  

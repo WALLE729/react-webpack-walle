@@ -7,5 +7,5 @@
  import "../../css/page/home.less"
  ReactDOM.render(
  	<Listhome />, 
- 	document.getElementById('home')
+ 	document.getElementById('app')
  );

@@ -15,8 +15,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports={
 	//entry:'./entry.js',配置入口文件，有几个写几个{index: './src/js/page/index.js',list: './src/js/page/list.js'}
 	entry:{
-		index:"./dev/js/page/index.js",
-		about:"./dev/js/page/about.js",
+		// index:"./dev/js/page/index.js",
+		// about:"./dev/js/page/about.js",
 		home:"./dev/js/page/home.js"
 	},
 	output:{
@@ -29,7 +29,7 @@ module.exports={
 	devServer:{
 		contentBase: './',  //开启的服务器的根路径，可自动打开当前路径中的index.html文件，你懂的
 		// host: 'localhost',
-		port:8099,//设置通过webpack-dev-server开启的服务器的端口号
+		port:8080,//设置通过webpack-dev-server开启的服务器的端口号
 		inline:true,// 设置实时刷新，也就是监听有变化，就刷新页面
 		hot:true // 热重载（局部更改，不需要整个刷新页面）
 		
@@ -85,35 +85,36 @@ module.exports={
         new ExtractTextPlugin('css/[name].css'), //单独使用link标签加载css并设置路径，相对于output配置中的publickPath
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
-            chunks: ['index','home','about'], //提取哪些模块共有的部分
-            minChunks: 3 // 提取至少3个模块共有的部分
+            // chunks: ['index','home','about'], //提取哪些模块共有的部分
+            chunks: ['home'], 
+            minChunks: 2 // 提取至少3个模块共有的部分
         }),
 
         //HtmlWebpackPlugin，模板生成相关的配置，每个对于一个页面的配置，有几个写几个
-        new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-            // favicon: './dev/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-            filename: './view/index.html', //生成的html存放路径，相对于path
-            template: './dev/view/index.html', //html模板路径 相对于webpack.config.js文件的路径
-            inject: 'body', //js插入的位置，true/'head'/'body'/false
-            hash: true, //为静态资源生成hash值
-            chunks: ['vendors', 'index'],//需要引入的chunk，不配置就会引入所有页面的资源
-            minify: { //压缩HTML文件    
-                removeComments: true, //移除HTML中的注释
-                collapseWhitespace: false //删除空白符与换行符
-            }
-        }),
-         new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-            // favicon: './dev/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-            filename: './view/about.html', //生成的html存放路径，相对于path
-            template: './dev/view/about.html', //html模板路径 相对于webpack.config.js文件的路径
-            inject: 'body', //js插入的位置，true/'head'/'body'/false
-            hash: true, //为静态资源生成hash值
-            chunks: ['vendors', 'about'],//需要引入的chunk，不配置就会引入所有页面的资源
-            minify: { //压缩HTML文件    
-                removeComments: true, //移除HTML中的注释
-                collapseWhitespace: false //删除空白符与换行符
-            }
-        }),
+        // new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+        //     // favicon: './dev/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
+        //     filename: './view/index.html', //生成的html存放路径，相对于path
+        //     template: './dev/view/index.html', //html模板路径 相对于webpack.config.js文件的路径
+        //     inject: 'body', //js插入的位置，true/'head'/'body'/false
+        //     hash: true, //为静态资源生成hash值
+        //     chunks: ['vendors', 'index'],//需要引入的chunk，不配置就会引入所有页面的资源
+        //     minify: { //压缩HTML文件    
+        //         removeComments: true, //移除HTML中的注释
+        //         collapseWhitespace: false //删除空白符与换行符
+        //     }
+        // }),
+        //  new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+        //     // favicon: './dev/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
+        //     filename: './view/about.html', //生成的html存放路径，相对于path
+        //     template: './dev/view/about.html', //html模板路径 相对于webpack.config.js文件的路径
+        //     inject: 'body', //js插入的位置，true/'head'/'body'/false
+        //     hash: true, //为静态资源生成hash值
+        //     chunks: ['vendors', 'about'],//需要引入的chunk，不配置就会引入所有页面的资源
+        //     minify: { //压缩HTML文件    
+        //         removeComments: true, //移除HTML中的注释
+        //         collapseWhitespace: false //删除空白符与换行符
+        //     }
+        // }),
          new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
             // favicon: './dev/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
             filename: './view/home.html', //生成的html存放路径，相对于path
